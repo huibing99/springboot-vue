@@ -1,3 +1,5 @@
+package com.vrtrain.springboot.exception;
+
 import lombok.Getter;
 
 /**

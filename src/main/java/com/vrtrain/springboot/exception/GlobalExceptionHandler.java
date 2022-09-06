@@ -1,2 +1,15 @@
-package com.vrtrain.springboot.exception;public class ExceptionHandler {
+package com.vrtrain.springboot.exception;
+
+import com.vrtrain.springboot.common.Result;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+    @ExceptionHandler(ServiceException.class)
+    @ResponseBody
+    public Result handle(ServiceException se){
+        return Result.error(se.getCode(), se.getMessage());
+    }
 }

@@ -1,4 +1,4 @@
-package com.vrtrain.springboot.common.interceptor;
+package com.vrtrain.springboot.config.interceptor;
 
 import cn.hutool.core.util.StrUtil;
 import com.auth0.jwt.JWT;

@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.vrtrain.springboot.common.Constants;
 import com.vrtrain.springboot.common.Result;
 import com.vrtrain.springboot.controller.dto.UserDTO;
+import com.vrtrain.springboot.utils.TokenUtils;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
@@ -47,7 +48,8 @@ public class UserController {
         if(StrUtil.isBlank(username) || StrUtil.isBlank(password)){
             return Result.error(Constants.CODE_400, "参数错误");
         }
-        return userService.login(userDTO);
+        UserDTO dto = userService.login(userDTO);
+        return Result.success(dto);
     }
 
     // 新增或者更新
