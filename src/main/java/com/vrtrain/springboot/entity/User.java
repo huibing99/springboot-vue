@@ -41,8 +41,9 @@ public class User implements Serializable {
 
       @ApiModelProperty("创建时间")
       private LocalDateTime createTime;
-
-    private String phone;
+     
+      @ApiModelProperty("用户电话")     
+      private String phone;
 
 
 }
