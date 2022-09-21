@@ -28,6 +28,7 @@ public class QuestionController {
     private IQuestionService questionService;
 
     // 新增或者更新
+
     @PostMapping
     public boolean save(@RequestBody Question question) {
         return questionService.saveOrUpdate(question);
@@ -46,6 +47,15 @@ public class QuestionController {
     @GetMapping
     public List<Question> findAll() {
         return questionService.list();
+    }
+
+    @GetMapping("/getByScene")
+    public List<Question> findByScene(@RequestParam String scene){
+        QueryWrapper<Question> queryWrapper = new QueryWrapper<>();
+        if (!"".equals(scene)) {
+            queryWrapper.eq("scene", scene);
+        }
+        return questionService.list(queryWrapper);
     }
 
     @GetMapping("/{id}")

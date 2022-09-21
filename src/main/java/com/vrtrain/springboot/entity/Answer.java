@@ -43,7 +43,7 @@ public class Answer implements Serializable {
       private String answer;
 
       @ApiModelProperty("答题时间")
-      private LocalDateTime answerTime;
+      private String answerTime;
 
 
 }
