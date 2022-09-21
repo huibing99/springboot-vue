@@ -9,7 +9,7 @@ url: jdbc:mysql://localhost:3306/vrtrain?serverTimezone=GMT%2b8 #数据库名为
 username: root          # 数据库用户名
 password: 123456        # 数据库密码
 ```
-- 在数据库中导入`sql/sys_user.sql`、`sql/question.sql`、`sql/answer.sql`三张表。
+- 在数据库中导入`sql/sys_user.sql`、`sql/question.sql`、`sql/answer.sql`、`sql/trainee.sql`四张表。
 
 
 ### 2. 启动springboot项目
