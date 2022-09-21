@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/vrtrain?serverTimezone=GMT%2b8
     username: root
-    password: 15090088430
+    password: 1535786693
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
