@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Random;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
 import com.vrtrain.springboot.service.IQuestionService;
@@ -49,13 +51,15 @@ public class QuestionController {
         return questionService.list();
     }
 
-    @GetMapping("/getByScene")
-    public List<Question> findByScene(@RequestParam String scene){
+    @GetMapping("/getRandomByScene")
+    public Question findByScene(@RequestParam String scene){
         QueryWrapper<Question> queryWrapper = new QueryWrapper<>();
         if (!"".equals(scene)) {
             queryWrapper.eq("scene", scene);
         }
-        return questionService.list(queryWrapper);
+        int sz = questionService.list(queryWrapper).size();
+        Random r = new Random();
+        return questionService.list(queryWrapper).get(r.nextInt(sz));
     }
 
     @GetMapping("/{id}")
