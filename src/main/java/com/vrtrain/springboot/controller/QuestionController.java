@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author huibing
  * @since 2022-09-07
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/question")
 public class QuestionController {

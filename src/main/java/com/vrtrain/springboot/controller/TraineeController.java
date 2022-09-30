@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/trainee")
 public class TraineeController {
