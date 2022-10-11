@@ -13,10 +13,11 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(userInterceptor())
-                .addPathPatterns("/question/getRandomByScene", "/answer");  // 拦截所有请求，通过判断token是否合法来决定是否需要登录
+                .addPathPatterns("/question/getRandomByScene", "/answer");
         registry.addInterceptor(adminInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/user/login", "/user/register", "/trainee/register", "/trainee/login","/question/getRandomByScene", "/answer");
+                .excludePathPatterns("/user/login", "/user/register", "/trainee/register", "/trainee/login",
+                        "/question/getRandomByScene", "/answer", "/question/getRandomTestPaper");
     }
 
     @Bean

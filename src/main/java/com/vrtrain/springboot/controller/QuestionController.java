@@ -4,6 +4,8 @@ package com.vrtrain.springboot.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -22,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author huibing
  * @since 2022-09-07
  */
-@CrossOrigin
+@CrossOrigin(origins = "http://vr-scene.metastar-health.com")
 @RestController
 @RequestMapping("/question")
 public class QuestionController {
@@ -63,6 +65,48 @@ public class QuestionController {
         return questionService.list(queryWrapper).get(r.nextInt(sz));
     }
 
+    @GetMapping("/getAllByScene")
+    public List<Question> findAllByScene(@RequestParam String scene){
+        QueryWrapper<Question> queryWrapper = new QueryWrapper<>();
+        if (!"".equals(scene)) {
+            queryWrapper.eq("scene", scene);
+        }
+        return questionService.list(queryWrapper);
+    }
+
+    @GetMapping("/getRandomTestPaper")
+    public List<List<Question>> getRandomTestPaper(@RequestParam Integer singleChoiceNum,
+                                             @RequestParam Integer multiChoiceNum,
+                                             @RequestParam Integer judgementNum){
+        QueryWrapper<Question> singleChoiceQuestions = new QueryWrapper<>();
+        singleChoiceQuestions.eq("type", "单选");
+        QueryWrapper<Question> multiChoiceQuestions = new QueryWrapper<>();
+        multiChoiceQuestions.eq("type", "多选");
+        QueryWrapper<Question> judgmentQuestions = new QueryWrapper<>();
+        judgmentQuestions.eq("type", "判断");
+        List<Question> singleChoiceList = questionService.list(singleChoiceQuestions);
+        List<Question> multiChoiceList = questionService.list(multiChoiceQuestions);
+        List<Question> judgementList = questionService.list(judgmentQuestions);
+        Collections.shuffle(singleChoiceList);
+        Collections.shuffle(multiChoiceList);
+        Collections.shuffle(judgementList);
+        List<Question> subSingleChoiceList = new ArrayList<>(), subMultiChoiceList = new ArrayList<>(),
+                subJudgementList = new ArrayList<>();
+        for (int i = 0; i < singleChoiceNum; i++) {
+            subSingleChoiceList.add(singleChoiceList.get(i));
+        }
+        for (int i = 0; i < multiChoiceNum; i++) {
+            subMultiChoiceList.add(multiChoiceList.get(i));
+        }
+        for (int i = 0; i < judgementNum; i++) {
+            subJudgementList.add(judgementList.get(i));
+        }
+        List<List<Question>> testPaper = new ArrayList<>();
+        testPaper.add(subSingleChoiceList);
+        testPaper.add(subMultiChoiceList);
+        testPaper.add(subJudgementList);
+        return testPaper;
+    }
     @GetMapping("/{id}")
     public Question findOne(@PathVariable Integer id) {
         return questionService.getById(id);
