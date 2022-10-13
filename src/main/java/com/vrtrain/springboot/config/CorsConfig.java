@@ -18,9 +18,13 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("http://vr-scene.metastar-health.com"); // 1 设置访问源地址
-        corsConfiguration.addAllowedOrigin("http://vr-web.metastar-health.com"); // 1 设置访问源地址
-        corsConfiguration.addAllowedOrigin("http://localhost:8080/"); // 1 设置访问源地址
+
+        // pro
+//        corsConfiguration.addAllowedOrigin("http://vr-scene.metastar-health.com"); // 1 设置访问源地址
+//        corsConfiguration.addAllowedOrigin("http://vr-web.metastar-health.com"); // 1 设置访问源地址
+        // dev
+        corsConfiguration.addAllowedOrigin("*");
+
         corsConfiguration.addAllowedHeader("*"); // 2 设置访问源请求头
         corsConfiguration.addAllowedMethod("*"); // 3 设置访问源请求方法
         corsConfiguration.setAllowCredentials(true);

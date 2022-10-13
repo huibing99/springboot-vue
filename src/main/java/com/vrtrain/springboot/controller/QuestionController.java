@@ -75,9 +75,7 @@ public class QuestionController {
     }
 
     @GetMapping("/getRandomTestPaper")
-    public List<List<Question>> getRandomTestPaper(@RequestParam Integer singleChoiceNum,
-                                             @RequestParam Integer multiChoiceNum,
-                                             @RequestParam Integer judgementNum){
+    public List<Question> getRandomTestPaper(){
         QueryWrapper<Question> singleChoiceQuestions = new QueryWrapper<>();
         singleChoiceQuestions.eq("type", "单选");
         QueryWrapper<Question> multiChoiceQuestions = new QueryWrapper<>();
@@ -92,19 +90,19 @@ public class QuestionController {
         Collections.shuffle(judgementList);
         List<Question> subSingleChoiceList = new ArrayList<>(), subMultiChoiceList = new ArrayList<>(),
                 subJudgementList = new ArrayList<>();
-        for (int i = 0; i < singleChoiceNum; i++) {
+        for (int i = 0; i < 20; i++) {
             subSingleChoiceList.add(singleChoiceList.get(i));
         }
-        for (int i = 0; i < multiChoiceNum; i++) {
+        for (int i = 0; i < 10; i++) {
             subMultiChoiceList.add(multiChoiceList.get(i));
         }
-        for (int i = 0; i < judgementNum; i++) {
+        for (int i = 0; i < 10; i++) {
             subJudgementList.add(judgementList.get(i));
         }
-        List<List<Question>> testPaper = new ArrayList<>();
-        testPaper.add(subSingleChoiceList);
-        testPaper.add(subMultiChoiceList);
-        testPaper.add(subJudgementList);
+        List<Question> testPaper = new ArrayList<>();
+        testPaper.addAll(subSingleChoiceList);
+        testPaper.addAll(subMultiChoiceList);
+        testPaper.addAll(subJudgementList);
         return testPaper;
     }
     @GetMapping("/{id}")
