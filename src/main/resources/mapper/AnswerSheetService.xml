@@ -1,24 +1,257 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.vrtrain.springboot.mapper.UserMapper">
+<mapper namespace="com.vrtrain.springboot.mapper.AnswerSheetMapper">
 
     <update id="update">
-        update sys_user
+        update answer_sheet
         <set>
             <if test="username != null">
                 username = #{username},
             </if>
-<!--            <if test="password != null">-->
-<!--                password = #{password}-->
-<!--            </if>-->
-            <if test="nickname != null">
-                nickname = #{nickname},
+            <if test="question_id_1 != null">
+                question_id_1 =  #{ question_id_1 },
             </if>
-            <if test="phone != null">
-                phone = #{phone},
+            <if test="answer_1 != null">
+                answer_1 =  #{ answer_1 },
             </if>
+            <if test="question_id_2 != null">
+                question_id_2 =  #{ question_id_2 },
+            </if>
+            <if test="answer_2 != null">
+                answer_2 =  #{ answer_2 },
+            </if>
+            <if test="question_id_3 != null">
+                question_id_3 =  #{ question_id_3 },
+            </if>
+            <if test="answer_3 != null">
+                answer_3 =  #{ answer_3 },
+            </if>
+            <if test="question_id_4 != null">
+                question_id_4 =  #{ question_id_4 },
+            </if>
+            <if test="answer_4 != null">
+                answer_4 =  #{ answer_4 },
+            </if>
+            <if test="question_id_5 != null">
+                question_id_5 =  #{ question_id_5 },
+            </if>
+            <if test="answer_5 != null">
+                answer_5 =  #{ answer_5 },
+            </if>
+            <if test="question_id_6 != null">
+                question_id_6 =  #{ question_id_6 },
+            </if>
+            <if test="answer_6 != null">
+                answer_6 =  #{ answer_6 },
+            </if>
+            <if test="question_id_7 != null">
+                question_id_7 =  #{ question_id_7 },
+            </if>
+            <if test="answer_7 != null">
+                answer_7 =  #{ answer_7 },
+            </if>
+            <if test="question_id_8 != null">
+                question_id_8 =  #{ question_id_8 },
+            </if>
+            <if test="answer_8 != null">
+                answer_8 =  #{ answer_8 },
+            </if>
+            <if test="question_id_9 != null">
+                question_id_9 =  #{ question_id_9 },
+            </if>
+            <if test="answer_9 != null">
+                answer_9 =  #{ answer_9 },
+            </if>
+            <if test="question_id_10 != null">
+                question_id_10 =  #{ question_id_10 },
+            </if>
+            <if test="answer_10 != null">
+                answer_10 =  #{ answer_10 },
+            </if>
+            <if test="question_id_11 != null">
+                question_id_11 =  #{ question_id_11 },
+            </if>
+            <if test="answer_11 != null">
+                answer_11 =  #{ answer_11 },
+            </if>
+            <if test="question_id_12 != null">
+                question_id_12 =  #{ question_id_12 },
+            </if>
+            <if test="answer_12 != null">
+                answer_12 =  #{ answer_12 },
+            </if>
+            <if test="question_id_13 != null">
+                question_id_13 =  #{ question_id_13 },
+            </if>
+            <if test="answer_13 != null">
+                answer_13 =  #{ answer_13 },
+            </if>
+            <if test="question_id_14 != null">
+                question_id_14 =  #{ question_id_14 },
+            </if>
+            <if test="answer_14 != null">
+                answer_14 =  #{ answer_14 },
+            </if>
+            <if test="question_id_15 != null">
+                question_id_15 =  #{ question_id_15 },
+            </if>
+            <if test="answer_15 != null">
+                answer_15 =  #{ answer_15 },
+            </if>
+            <if test="question_id_16 != null">
+                question_id_16 =  #{ question_id_16 },
+            </if>
+            <if test="answer_16 != null">
+                answer_16 =  #{ answer_16 },
+            </if>
+            <if test="question_id_17 != null">
+                question_id_17 =  #{ question_id_17 },
+            </if>
+            <if test="answer_17 != null">
+                answer_17 =  #{ answer_17 },
+            </if>
+            <if test="question_id_18 != null">
+                question_id_18 =  #{ question_id_18 },
+            </if>
+            <if test="answer_18 != null">
+                answer_18 =  #{ answer_18 },
+            </if>
+            <if test="question_id_19 != null">
+                question_id_19 =  #{ question_id_19 },
+            </if>
+            <if test="answer_19 != null">
+                answer_19 =  #{ answer_19 },
+            </if>
+            <if test="question_id_20 != null">
+                question_id_20 =  #{ question_id_20 },
+            </if>
+            <if test="answer_20 != null">
+                answer_20 =  #{ answer_20 },
+            </if>
+            <if test="question_id_21 != null">
+                question_id_21 =  #{ question_id_21 },
+            </if>
+            <if test="answer_21 != null">
+                answer_21 =  #{ answer_21 },
+            </if>
+            <if test="question_id_22 != null">
+                question_id_22 =  #{ question_id_22 },
+            </if>
+            <if test="answer_22 != null">
+                answer_22 =  #{ answer_22 },
+            </if>
+            <if test="question_id_23 != null">
+                question_id_23 =  #{ question_id_23 },
+            </if>
+            <if test="answer_23 != null">
+                answer_23 =  #{ answer_23 },
+            </if>
+            <if test="question_id_24 != null">
+                question_id_24 =  #{ question_id_24 },
+            </if>
+            <if test="answer_24 != null">
+                answer_24 =  #{ answer_24 },
+            </if>
+            <if test="question_id_25 != null">
+                question_id_25 =  #{ question_id_25 },
+            </if>
+            <if test="answer_25 != null">
+                answer_25 =  #{ answer_25 },
+            </if>
+            <if test="question_id_26 != null">
+                question_id_26 =  #{ question_id_26 },
+            </if>
+            <if test="answer_26 != null">
+                answer_26 =  #{ answer_26 },
+            </if>
+            <if test="question_id_27 != null">
+                question_id_27 =  #{ question_id_27 },
+            </if>
+            <if test="answer_27 != null">
+                answer_27 =  #{ answer_27 },
+            </if>
+            <if test="question_id_28 != null">
+                question_id_28 =  #{ question_id_28 },
+            </if>
+            <if test="answer_28 != null">
+                answer_28 =  #{ answer_28 },
+            </if>
+            <if test="question_id_29 != null">
+                question_id_29 =  #{ question_id_29 },
+            </if>
+            <if test="answer_29 != null">
+                answer_29 =  #{ answer_29 },
+            </if>
+            <if test="question_id_30 != null">
+                question_id_30 =  #{ question_id_30 },
+            </if>
+            <if test="answer_30 != null">
+                answer_30 =  #{ answer_30 },
+            </if>
+            <if test="question_id_31 != null">
+                question_id_31 =  #{ question_id_31 },
+            </if>
+            <if test="answer_31 != null">
+                answer_31 =  #{ answer_31 },
+            </if>
+            <if test="question_id_32 != null">
+                question_id_32 =  #{ question_id_32 },
+            </if>
+            <if test="answer_32 != null">
+                answer_32 =  #{ answer_32 },
+            </if>
+            <if test="question_id_33 != null">
+                question_id_33 =  #{ question_id_33 },
+            </if>
+            <if test="answer_33 != null">
+                answer_33 =  #{ answer_33 },
+            </if>
+            <if test="question_id_34 != null">
+                question_id_34 =  #{ question_id_34 },
+            </if>
+            <if test="answer_34 != null">
+                answer_34 =  #{ answer_34 },
+            </if>
+            <if test="question_id_35 != null">
+                question_id_35 =  #{ question_id_35 },
+            </if>
+            <if test="answer_35 != null">
+                answer_35 =  #{ answer_35 },
+            </if>
+            <if test="question_id_36 != null">
+                question_id_36 =  #{ question_id_36 },
+            </if>
+            <if test="answer_36 != null">
+                answer_36 =  #{ answer_36 },
+            </if>
+            <if test="question_id_37 != null">
+                question_id_37 =  #{ question_id_37 },
+            </if>
+            <if test="answer_37 != null">
+                answer_37 =  #{ answer_37 },
+            </if>
+            <if test="question_id_38 != null">
+                question_id_38 =  #{ question_id_38 },
+            </if>
+            <if test="answer_38 != null">
+                answer_38 =  #{ answer_38 },
+            </if>
+            <if test="question_id_39 != null">
+                question_id_39 =  #{ question_id_39 },
+            </if>
+            <if test="answer_39 != null">
+                answer_39 =  #{ answer_39 },
+            </if>
+            <if test="question_id_40 != null">
+                question_id_40 =  #{ question_id_40 },
+            </if>
+            <if test="answer_40 != null">
+                answer_40 =  #{ answer_40 },
+            </if>
+
         </set>
+
         <where>
             id = #{id}
         </where>
