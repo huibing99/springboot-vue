@@ -20,14 +20,14 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-  @TableName("answer_sheet")
+@TableName("answer_sheet")
 @ApiModel(value = "AnswerSheet对象", description = "")
 public class AnswerSheet implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
       @ApiModelProperty("id")
-        @TableId(value = "id", type = IdType.AUTO)
+      @TableId(value = "id", type = IdType.AUTO)
       private Integer id;
 
       @ApiModelProperty("用户名")

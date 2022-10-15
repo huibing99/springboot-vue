@@ -19,7 +19,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/user/login", "/user/register", "/trainee/register", "/trainee/login",
                         "/question/getRandomByScene", "/answer",
                         "/question/getRandomTestPaper", "/answer-sheet", "/answer-sheet/score",
-                        "/answer-sheet/getByUser");
+                        "/answer-sheet/getByUser", "/answer-sheet/save2");
     }
 
     @Bean

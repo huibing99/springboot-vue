@@ -4,6 +4,7 @@ package com.vrtrain.springboot.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.vrtrain.springboot.entity.Answer;
+import com.vrtrain.springboot.entity.Answer2;
 import com.vrtrain.springboot.entity.AnswerSheet;
 import com.vrtrain.springboot.service.IAnswerSheetService;
 import com.vrtrain.springboot.service.IQuestionService;
@@ -12,8 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * <p>
@@ -61,6 +61,27 @@ public class AnswerSheetController {
         return answerSheetService.saveOrUpdate(answerSheet);
     }
 
+    @PostMapping("/save2")
+    public boolean save2(@RequestBody Answer2 answer2) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        String username = answer2.getUsername();
+        List<Integer> questionOrder = answer2.getQuestionOrder();
+        HashMap<Integer, String> question2Answer = answer2.getQuestion2Answer();
+        HashMap<Integer, Integer> quesitonMp = new HashMap<>();
+        for(int i = 0; i < questionOrder.size(); ++i){
+            quesitonMp.put(questionOrder.get(i), i+1);
+        }
+        AnswerSheet answerSheet = new AnswerSheet();
+        answerSheet.setUsername(username);
+        for (Integer integer : questionOrder) {
+            String setQuestionMethodName = "setQuestionId" + quesitonMp.get(integer);
+            Method setQuestionMethod = answerSheet.getClass().getMethod(setQuestionMethodName, Integer.class);
+            setQuestionMethod.invoke(answerSheet, integer);
+            String setAnswerMethodName = "setAnswer" + quesitonMp.get(integer);
+            Method setAnswerMethod = answerSheet.getClass().getMethod(setAnswerMethodName, String.class);
+            setAnswerMethod.invoke(answerSheet, question2Answer.get(integer));
+        }
+        return save(answerSheet);
+    }
     @DeleteMapping("/{id}")
     public Boolean delete(@PathVariable Integer id) {
         return answerSheetService.removeById(id);
