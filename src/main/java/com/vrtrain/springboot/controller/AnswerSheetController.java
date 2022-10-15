@@ -104,5 +104,10 @@ public class AnswerSheetController {
     public Integer getTotalScore(@RequestParam Integer id) {
         return findOne(id).getScore();
     }
+
+    @GetMapping("/getScoreByUser")
+    public Integer getTotalScore(@RequestParam String username) {
+        return getTotalScore(findByUsername(username).getId());
+    }
 }
 
