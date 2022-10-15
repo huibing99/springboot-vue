@@ -29,35 +29,12 @@ public class AnswerSheetController {
 
     @Resource
     private IAnswerSheetService answerSheetService;
-    @Resource
-    private IQuestionService questionService;
+
 
     // 新增或者更新
     @PostMapping
     public boolean save(@RequestBody AnswerSheet answerSheet) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        int retScore = 0;
-        for(int i = 1; i <= 40; ++i){
-            String getQuestionMethodName = "getQuestionId" + i;
-            Method getQuestionMethod = answerSheet.getClass().getMethod(getQuestionMethodName);
-            if (getQuestionMethod.invoke(answerSheet) == null){
-                continue;
-            }
-            int questionId = (int) getQuestionMethod.invoke(answerSheet);
-            String standardAnswer = questionService.getById(questionId).getAnswer();
-
-            String getAnswerMethodName = "getAnswer" + i;
-            Method getAnswerMethod = answerSheet.getClass().getMethod(getAnswerMethodName);
-            String userAnswer = getAnswerMethod.invoke(answerSheet).toString();
-            if(Objects.equals(standardAnswer, userAnswer)){
-                if(i >= 21 && i <= 30){
-                    retScore += 4;
-                }
-                else {
-                    retScore += 2;
-                }
-            }
-        }
-        answerSheet.setScore(retScore);
+        answerSheet.setScore(answerSheetService.calculateScore(answerSheet));
         return answerSheetService.saveOrUpdate(answerSheet);
     }
 
@@ -80,7 +57,8 @@ public class AnswerSheetController {
             Method setAnswerMethod = answerSheet.getClass().getMethod(setAnswerMethodName, String.class);
             setAnswerMethod.invoke(answerSheet, question2Answer.get(integer));
         }
-        return save(answerSheet);
+        answerSheet.setScore(answerSheetService.calculateScore(answerSheet));
+        return answerSheetService.saveOrUpdate(answerSheet);
     }
     @DeleteMapping("/{id}")
     public Boolean delete(@PathVariable Integer id) {
