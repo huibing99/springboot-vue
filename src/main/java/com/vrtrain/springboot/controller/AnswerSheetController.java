@@ -135,10 +135,10 @@ public class AnswerSheetController {
             Question question = questionService.getById(questionId);
             String getAnswerMethodName = "getAnswer" + i;
             Method getAnswerMethod = answerSheet.getClass().getMethod(getAnswerMethodName);
-            if (getAnswerMethod.invoke(answerSheet) == null){
-                continue;
+            String userAnswer = "";
+            if (getAnswerMethod.invoke(answerSheet) != null){
+                userAnswer = getAnswerMethod.invoke(answerSheet).toString();
             }
-            String userAnswer = getAnswerMethod.invoke(answerSheet).toString();
             AnswerDetailDTO answerDetailDTO = new AnswerDetailDTO();
             answerDetailDTO.setQuestion(question);
             answerDetailDTO.setAnswer(userAnswer);
