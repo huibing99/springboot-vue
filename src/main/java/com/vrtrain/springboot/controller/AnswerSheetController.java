@@ -3,9 +3,13 @@ package com.vrtrain.springboot.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.vrtrain.springboot.common.Constants;
+import com.vrtrain.springboot.common.Result;
+import com.vrtrain.springboot.controller.dto.AnswerDetailDTO;
 import com.vrtrain.springboot.entity.Answer;
 import com.vrtrain.springboot.entity.Answer2;
 import com.vrtrain.springboot.entity.AnswerSheet;
+import com.vrtrain.springboot.entity.Question;
 import com.vrtrain.springboot.service.IAnswerSheetService;
 import com.vrtrain.springboot.service.IQuestionService;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +33,7 @@ public class AnswerSheetController {
 
     @Resource
     private IAnswerSheetService answerSheetService;
-
+    @Resource IQuestionService questionService;
 
     // 新增或者更新
     @PostMapping
@@ -60,6 +64,7 @@ public class AnswerSheetController {
         answerSheet.setScore(answerSheetService.calculateScore(answerSheet));
         return answerSheetService.saveOrUpdate(answerSheet);
     }
+
     @DeleteMapping("/{id}")
     public Boolean delete(@PathVariable Integer id) {
         return answerSheetService.removeById(id);
@@ -111,6 +116,35 @@ public class AnswerSheetController {
             return -1;
         }
         return getTotalScore(findByUsername(username).getId());
+    }
+
+    @GetMapping("/getDetailScoreByUser")
+    public Result getDetailScore(@RequestParam String username) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        if(findByUsername(username) == null) {
+            return Result.error(Constants.CODE_400, "用户成绩不存在");
+        }
+        List<AnswerDetailDTO> answerDetails = new ArrayList<>();
+        AnswerSheet answerSheet = findByUsername(username);
+        for(int i = 1; i <= 40; ++i){
+            String getQuestionMethodName = "getQuestionId" + i;
+            Method getQuestionMethod = answerSheet.getClass().getMethod(getQuestionMethodName);
+            if (getQuestionMethod.invoke(answerSheet) == null){
+                continue;
+            }
+            int questionId = (int) getQuestionMethod.invoke(answerSheet);
+            Question question = questionService.getById(questionId);
+            String getAnswerMethodName = "getAnswer" + i;
+            Method getAnswerMethod = answerSheet.getClass().getMethod(getAnswerMethodName);
+            if (getAnswerMethod.invoke(answerSheet) == null){
+                continue;
+            }
+            String userAnswer = getAnswerMethod.invoke(answerSheet).toString();
+            AnswerDetailDTO answerDetailDTO = new AnswerDetailDTO();
+            answerDetailDTO.setQuestion(question);
+            answerDetailDTO.setAnswer(userAnswer);
+            answerDetails.add(answerDetailDTO);
+        }
+        return Result.success(answerDetails);
     }
 }
 

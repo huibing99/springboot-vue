@@ -1,6 +1,8 @@
 package com.vrtrain.springboot.service.impl;
 
+import com.vrtrain.springboot.controller.dto.AnswerDetailDTO;
 import com.vrtrain.springboot.entity.AnswerSheet;
+import com.vrtrain.springboot.entity.Question;
 import com.vrtrain.springboot.mapper.AnswerSheetMapper;
 import com.vrtrain.springboot.service.IAnswerSheetService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
