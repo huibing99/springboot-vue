@@ -17,7 +17,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
         registry.addInterceptor(adminInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/user/login", "/user/register", "/trainee/register", "/trainee/login",
-                        "/question/getRandomByScene", "/answer",
+                        "/question/getRandomByScene", "/answer", "/law",
                         "/question/getRandomTestPaper", "/answer-sheet", "/answer-sheet/score",
                         "/answer-sheet/getByUser", "/answer-sheet/save2", "/answer-sheet/getScoreByUser",
                         "/answer-sheet/getDetailScoreByUser");
