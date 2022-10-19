@@ -2,6 +2,7 @@ package com.vrtrain.springboot.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.vrtrain.springboot.entity.Question;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
@@ -66,6 +67,13 @@ public class LawController {
         queryWrapper.orderByDesc("id");
         return lawService.page(new Page<>(pageNum, pageSize), queryWrapper);
     }
-
+    @GetMapping("/getAllByScene")
+    public List<Law> findAllByScene(@RequestParam String scene){
+        QueryWrapper<Law> queryWrapper = new QueryWrapper<>();
+        if (!"".equals(scene)) {
+            queryWrapper.eq("scene", scene);
+        }
+        return lawService.list(queryWrapper);
+    }
 }
 
