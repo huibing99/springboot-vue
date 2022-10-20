@@ -6,8 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.vrtrain.springboot.common.Constants;
 import com.vrtrain.springboot.common.Result;
 import com.vrtrain.springboot.controller.dto.AnswerDetailDTO;
-import com.vrtrain.springboot.entity.Answer;
-import com.vrtrain.springboot.entity.Answer2;
+import com.vrtrain.springboot.controller.dto.Answer2;
 import com.vrtrain.springboot.entity.AnswerSheet;
 import com.vrtrain.springboot.entity.Question;
 import com.vrtrain.springboot.service.IAnswerSheetService;
@@ -28,6 +27,7 @@ import java.util.*;
  * @since 2022-10-13
  */
 @RestController
+@CrossOrigin(origins = "http://vr-exam.metastar-health.com")
 @RequestMapping("/answer-sheet")
 public class AnswerSheetController {
 

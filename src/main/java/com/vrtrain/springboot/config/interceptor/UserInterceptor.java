@@ -42,20 +42,20 @@ public class UserInterceptor implements HandlerInterceptor {
         try {
             userId = JWT.decode(token).getAudience().get(0);
         } catch (JWTDecodeException j) {
-            throw new ServiceException(Constants.CODE_401, "token验证失败，请重新登录1");
+            throw new ServiceException(Constants.CODE_401, "token验证失败，请重新登录2");
         }
         // 根据token中的userid查询数据库
 //        User admin = userService.getById(userId);
         Trainee user = traineeService.getById(userId);
         if (user == null) {
-            throw new ServiceException(Constants.CODE_401, "用户不存在，请重新登录1");
+            throw new ServiceException(Constants.CODE_401, "用户不存在，请重新登录3");
         }
         // 用户密码加签验证 token
         JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPassword())).build();
         try {
             jwtVerifier.verify(token); // 验证token
         } catch (JWTVerificationException e) {
-            throw new ServiceException(Constants.CODE_401, "token验证失败，请重新登录1");
+            throw new ServiceException(Constants.CODE_401, "token验证失败，请重新登录4");
         }
         return true;
     }

@@ -21,7 +21,7 @@ import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.List;
 
-@CrossOrigin(origins = "http://vr-scene.metastar-health.com")
+@CrossOrigin(origins = "http://vr-exam.metastar-health.com")
 @RestController
 @RequestMapping("/trainee")
 public class TraineeController {

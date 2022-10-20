@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-10-19
  */
 @RestController
+@CrossOrigin(origins = {"http://vr-scene.metastar-health.com", "http://vr-exam.metastar-health.com"})
 @RequestMapping("/law")
 public class LawController {
 
@@ -57,10 +58,12 @@ public class LawController {
     @GetMapping("/page")
     public Page<Law> findPage(@RequestParam Integer pageNum,
                                     @RequestParam Integer pageSize,
-                                    @RequestParam String question,
+                                    @RequestParam String obligation,
+                                    @RequestParam String liability,
                                     @RequestParam String scene) {
         QueryWrapper<Law> queryWrapper = new QueryWrapper<>();
-        queryWrapper.like("question", question);
+        queryWrapper.like("obligation", obligation);
+        queryWrapper.like("liability", liability);
         if (!"".equals(scene)) {
             queryWrapper.eq("scene", scene);
         }

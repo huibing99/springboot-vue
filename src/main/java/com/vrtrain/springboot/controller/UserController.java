@@ -96,7 +96,7 @@ public class UserController {
         queryWrapper.like("username", username);
         queryWrapper.orderByDesc("id");
         return userService.page(new Page<>(pageNum, pageSize), queryWrapper);
-        }
+    }
 
     /**
      * 导出接口

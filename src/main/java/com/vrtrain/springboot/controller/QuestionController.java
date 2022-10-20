@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author huibing
  * @since 2022-09-07
  */
-@CrossOrigin(origins = "http://vr-scene.metastar-health.com")
+@CrossOrigin(origins = "http://vr-exam.metastar-health.com")
 @RestController
 @RequestMapping("/question")
 public class QuestionController {
