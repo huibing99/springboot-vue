@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-10-19
  */
 @RestController
-@CrossOrigin(origins = {"http://vr-scene.metastar-health.com", "http://vr-exam.metastar-health.com"})
+@CrossOrigin(origins = "*")
 @RequestMapping("/law")
 public class LawController {
 
