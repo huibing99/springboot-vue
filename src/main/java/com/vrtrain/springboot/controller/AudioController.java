@@ -75,26 +75,26 @@ public class AudioController {
     }
 
     // 将 yml 中的自定义配置注入到这里
-    @Value("${vrtrain.file.root.path}")
-    private String filePath;
-    @PostMapping("/upload")
-    public Result fileUploads(@RequestParam MultipartFile file,
-                              @RequestParam String scene) {
-        // 获取上传的文件名称
-        String fileName = scene + ".wav";
-        // 得到文件保存的位置以及新文件名
-        File dest = new File(filePath + fileName);
-        if (!dest.exists()){
-            dest.mkdirs();
-        }
-        try {
-            // 上传的文件被保存了
-            file.transferTo(dest);
-            // 自定义返回的统一的 JSON 格式的数据，可以直接返回这个字符串也是可以的。
-            return Result.success();
-        } catch (IOException e) {
-            return Result.error(Constants.CODE_400, "上传失败");
-        }
-    }
+//    @Value("${vrtrain.file.root.path}")
+//    private String filePath;
+//    @PostMapping("/upload")
+//    public Result fileUploads(@RequestParam MultipartFile file,
+//                              @RequestParam String scene) {
+//        // 获取上传的文件名称
+//        String fileName = scene + ".wav";
+//        // 得到文件保存的位置以及新文件名
+//        File dest = new File(filePath + fileName);
+//        if (!dest.exists()){
+//            dest.mkdirs();
+//        }
+//        try {
+//            // 上传的文件被保存了
+//            file.transferTo(dest);
+//            // 自定义返回的统一的 JSON 格式的数据，可以直接返回这个字符串也是可以的。
+//            return Result.success();
+//        } catch (IOException e) {
+//            return Result.error(Constants.CODE_400, "上传失败");
+//        }
+//    }
 }
 
