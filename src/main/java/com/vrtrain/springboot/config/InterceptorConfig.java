@@ -13,7 +13,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(userInterceptor())
-                .addPathPatterns("/question/getRandomByScene", "/question/getRandomTestPaper",
+                .addPathPatterns("/question/getRandomTestPaper",
                         "/answer-sheet/getScoreByUser", "/answer-sheet/save2");
         registry.addInterceptor(adminInterceptor())
                 .addPathPatterns("/**")
