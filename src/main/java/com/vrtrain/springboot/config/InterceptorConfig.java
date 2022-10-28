@@ -13,8 +13,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(userInterceptor())
-                .addPathPatterns("/question/getRandomTestPaper",
-                        "/answer-sheet/getScoreByUser", "/answer-sheet/save2");
+                .addPathPatterns("/answer-sheet/getScoreByUser", "/answer-sheet/save2");
         registry.addInterceptor(adminInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/user/login", "/user/register",
@@ -23,7 +22,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
                         "/answer-sheet/getScoreByUser", "/answer-sheet/save2",
                         "/answer-sheet/getByUser", "/answer-sheet/getDetailScoreByUser",
                         "/law/getAllByScene",
-                        "/audio/*");
+                        "/audio/*",
+                        "/exam/*",
+                        "/posted-exam/*");
     }
 
     @Bean
