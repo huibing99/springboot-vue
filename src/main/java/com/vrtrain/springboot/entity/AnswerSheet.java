@@ -33,6 +33,9 @@ public class AnswerSheet implements Serializable {
       @ApiModelProperty("用户名")
       private String username;
 
+      @ApiModelProperty("试卷id")
+      private Integer examId;
+
       @ApiModelProperty("题目1")
       private Integer questionId1;
 

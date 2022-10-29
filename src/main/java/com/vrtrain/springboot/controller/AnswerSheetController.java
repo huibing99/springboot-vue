@@ -11,6 +11,7 @@ import com.vrtrain.springboot.entity.AnswerSheet;
 import com.vrtrain.springboot.entity.Question;
 import com.vrtrain.springboot.service.IAnswerSheetService;
 import com.vrtrain.springboot.service.IQuestionService;
+import io.swagger.models.auth.In;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -45,6 +46,7 @@ public class AnswerSheetController {
     @PostMapping("/save2")
     public boolean save2(@RequestBody Answer2 answer2) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         String username = answer2.getUsername();
+        Integer examId = answer2.getExamId();
         List<Integer> questionOrder = answer2.getQuestionOrder();
         HashMap<Integer, String> question2Answer = answer2.getQuestion2Answer();
         HashMap<Integer, Integer> quesitonMp = new HashMap<>();
@@ -53,6 +55,7 @@ public class AnswerSheetController {
         }
         AnswerSheet answerSheet = new AnswerSheet();
         answerSheet.setUsername(username);
+        answerSheet.setExamId(examId);
         for (Integer integer : questionOrder) {
             String setQuestionMethodName = "setQuestionId" + quesitonMp.get(integer);
             Method setQuestionMethod = answerSheet.getClass().getMethod(setQuestionMethodName, Integer.class);

@@ -4,12 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
-
 @Getter
 @Setter
-public class Answer2 {
+public class SubmitAnswer {
     String username;
-    Integer examId;
     List<Integer> questionOrder;
     HashMap<Integer, String> question2Answer;
 }
