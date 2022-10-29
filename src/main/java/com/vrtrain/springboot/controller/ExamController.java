@@ -120,7 +120,7 @@ public class ExamController {
         ExamDTO examDTO = new ExamDTO();
         examDTO.setId(exam.getId());
         examDTO.setName(exam.getName());
-        examDTO.setCreatedTime(exam.getCreatedTime());
+        examDTO.setStartTime(exam.getStartTime());
         examDTO.setEndTime(exam.getEndTime());
         examDTO.setIsPosted(exam.getIsPosted());
         examDTO.setQuestionList(questionList);
