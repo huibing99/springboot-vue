@@ -122,7 +122,9 @@ public class ExamController {
         examDTO.setName(exam.getName());
         examDTO.setStartTime(exam.getStartTime());
         examDTO.setEndTime(exam.getEndTime());
+        examDTO.setTimeLimit(exam.getTimeLimit());
         examDTO.setIsPosted(exam.getIsPosted());
+        examDTO.setCreatedTime(exam.getCreatedTime());
         examDTO.setQuestionList(questionList);
         return Result.success(examDTO);
     }

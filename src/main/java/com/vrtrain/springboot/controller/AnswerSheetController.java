@@ -100,10 +100,14 @@ public class AnswerSheetController {
     @GetMapping("/page")
     public Page<AnswerSheet> findPage(@RequestParam Integer pageNum,
                                       @RequestParam Integer pageSize,
-                                      @RequestParam String username) {
+                                      @RequestParam String username,
+                                      @RequestParam Integer examId) {
         QueryWrapper<AnswerSheet> queryWrapper = new QueryWrapper<>();
         if (!"".equals(username)) {
             queryWrapper.eq("username", username);
+        }
+        if (!"".equals(examId)){
+            queryWrapper.eq("examId", examId);
         }
         queryWrapper.orderByDesc("id");
         return answerSheetService.page(new Page<>(pageNum, pageSize), queryWrapper);
