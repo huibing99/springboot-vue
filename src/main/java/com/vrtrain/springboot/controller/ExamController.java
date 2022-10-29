@@ -4,6 +4,8 @@ package com.vrtrain.springboot.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.vrtrain.springboot.common.Constants;
 import com.vrtrain.springboot.common.Result;
+import com.vrtrain.springboot.controller.dto.AnswerDetailDTO;
+import com.vrtrain.springboot.controller.dto.ExamDTO;
 import com.vrtrain.springboot.entity.Question;
 import com.vrtrain.springboot.service.IPostedExamService;
 import com.vrtrain.springboot.service.IQuestionService;
@@ -95,9 +97,34 @@ public class ExamController {
     }
 
     @GetMapping("/getCurrentExam")
-    public Exam getCurrentExam(){
+    public Result getCurrentExam() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        if (postedExamService.getById(1) == null || postedExamService.getById(1).getPostedExamId() == null){
+            return Result.error(Constants.CODE_500, "当前未发布考试！");
+        }
         Integer examId = postedExamService.getById(1).getPostedExamId();
-        return examService.getById(examId);
+        Exam exam = examService.getById(examId);
+        if (exam == null){
+            return Result.error(Constants.CODE_500, "当前未发布考试！");
+        }
+        List<Question> questionList = new ArrayList<>();
+        for(int i = 1; i <= 40; ++i){
+            String getQuestionMethodName = "getQuestionId" + i;
+            Method getQuestionMethod = exam.getClass().getMethod(getQuestionMethodName);
+            if (getQuestionMethod.invoke(exam) == null){
+                continue;
+            }
+            int questionId = (int) getQuestionMethod.invoke(exam);
+            Question question = questionService.getById(questionId);
+            questionList.add(question);
+        }
+        ExamDTO examDTO = new ExamDTO();
+        examDTO.setId(exam.getId());
+        examDTO.setName(exam.getName());
+        examDTO.setCreatedTime(exam.getCreatedTime());
+        examDTO.setEndTime(exam.getEndTime());
+        examDTO.setIsPosted(exam.getIsPosted());
+        examDTO.setQuestionList(questionList);
+        return Result.success(examDTO);
     }
 }
 
