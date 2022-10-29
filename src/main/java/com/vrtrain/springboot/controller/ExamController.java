@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
 import com.vrtrain.springboot.service.IExamService;
@@ -127,6 +127,16 @@ public class ExamController {
         examDTO.setCreatedTime(exam.getCreatedTime());
         examDTO.setQuestionList(questionList);
         return Result.success(examDTO);
+    }
+
+    @GetMapping("/getAllNames")
+    public HashMap<Integer, String> getAllNames() {
+        List<Exam> exams = examService.list();
+        HashMap<Integer, String> examNameMap = new HashMap<>();
+        for (Exam exam : exams){
+            examNameMap.put(exam.getId(), exam.getName());
+        }
+        return examNameMap;
     }
 }
 

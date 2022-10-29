@@ -106,7 +106,7 @@ public class AnswerSheetController {
         if (!"".equals(username)) {
             queryWrapper.eq("username", username);
         }
-        if (!"".equals(examId)){
+        if (examId != null){
             queryWrapper.eq("examId", examId);
         }
         queryWrapper.orderByDesc("id");

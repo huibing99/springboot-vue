@@ -16,25 +16,25 @@ import lombok.Setter;
  * </p>
  *
  * @author huibing
- * @since 2022-10-14
+ * @since 2022-10-29
  */
 @Getter
 @Setter
-@TableName("answer_sheet")
+  @TableName("answer_sheet")
 @ApiModel(value = "AnswerSheet对象", description = "")
 public class AnswerSheet implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
       @ApiModelProperty("id")
-      @TableId(value = "id", type = IdType.AUTO)
+        @TableId(value = "id", type = IdType.AUTO)
       private Integer id;
-
-      @ApiModelProperty("用户名")
-      private String username;
 
       @ApiModelProperty("试卷id")
       private Integer examId;
+
+      @ApiModelProperty("用户名")
+        private String username;
 
       @ApiModelProperty("题目1")
       private Integer questionId1;
