@@ -107,7 +107,7 @@ public class AnswerSheetController {
             queryWrapper.eq("username", username);
         }
         if (examId != null){
-            queryWrapper.eq("examId", examId);
+            queryWrapper.eq("exam_id", examId);
         }
         queryWrapper.orderByDesc("id");
         return answerSheetService.page(new Page<>(pageNum, pageSize), queryWrapper);
