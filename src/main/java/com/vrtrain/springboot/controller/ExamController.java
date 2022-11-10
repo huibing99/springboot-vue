@@ -6,7 +6,9 @@ import com.vrtrain.springboot.common.Constants;
 import com.vrtrain.springboot.common.Result;
 import com.vrtrain.springboot.controller.dto.AnswerDetailDTO;
 import com.vrtrain.springboot.controller.dto.ExamDTO;
+import com.vrtrain.springboot.entity.Law;
 import com.vrtrain.springboot.entity.Question;
+import com.vrtrain.springboot.service.ILawService;
 import com.vrtrain.springboot.service.IPostedExamService;
 import com.vrtrain.springboot.service.IQuestionService;
 import org.springframework.web.bind.annotation.*;
@@ -138,5 +140,6 @@ public class ExamController {
         }
         return examNameMap;
     }
+
 }
 

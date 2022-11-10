@@ -2,7 +2,11 @@ package com.vrtrain.springboot.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.vrtrain.springboot.common.Result;
+import com.vrtrain.springboot.controller.dto.UnityApi;
+import com.vrtrain.springboot.entity.Law;
 import com.vrtrain.springboot.service.IAnswerSheetService;
+import com.vrtrain.springboot.service.ILawService;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -32,6 +36,8 @@ public class QuestionController {
 
     @Resource
     private IQuestionService questionService;
+    @Resource
+    private ILawService lawService;
 
     // 新增或者更新
 
@@ -128,6 +134,22 @@ public class QuestionController {
         queryWrapper.orderByDesc("id");
         return questionService.page(new Page<>(pageNum, pageSize), queryWrapper);
     }
-
+    // unity交互
+    @GetMapping("/getByScene")
+    public UnityApi getByScene(@RequestParam String scene){
+        UnityApi ret = new UnityApi();
+        ret.setAudio("true");
+        List<Law> law = lawService.findAllByScene(scene);
+        ret.setLawUrl("false");
+        if(law.size() > 0){
+            ret.setLawUrl("http://vr-backend.metastar-health.com/law/getAllByScene?scene=" + scene);
+        }
+        QueryWrapper<Question> queryWrapper = new QueryWrapper<>();
+        if (!"".equals(scene)) {
+            queryWrapper.eq("scene", scene);
+        }
+        ret.setExam(questionService.list(queryWrapper));
+        return ret;
+    }
 }
 

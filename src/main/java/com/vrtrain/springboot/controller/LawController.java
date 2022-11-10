@@ -72,11 +72,7 @@ public class LawController {
     }
     @GetMapping("/getAllByScene")
     public List<Law> findAllByScene(@RequestParam String scene){
-        QueryWrapper<Law> queryWrapper = new QueryWrapper<>();
-        if (!"".equals(scene)) {
-            queryWrapper.eq("scene", scene);
-        }
-        return lawService.list(queryWrapper);
+        return lawService.findAllByScene(scene);
     }
 }
 
