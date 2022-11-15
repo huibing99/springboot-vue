@@ -142,7 +142,7 @@ public class QuestionController {
         List<Law> law = lawService.findAllByScene(scene);
         ret.setLawUrl("false");
         if(law.size() > 0){
-            ret.setLawUrl("http://vr-backend.metastar-health.com/law/getAllByScene?scene=" + scene);
+            ret.setLawUrl("http://vr-scene.metastar-health.com/law?scene=" + scene);
         }
         QueryWrapper<Question> queryWrapper = new QueryWrapper<>();
         if (!"".equals(scene)) {
