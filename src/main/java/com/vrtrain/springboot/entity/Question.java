@@ -57,5 +57,6 @@ public class Question implements Serializable {
       @ApiModelProperty("选项6")
       private String op6;
 
+      private int opsCount;
 
 }

@@ -9,10 +9,7 @@ import com.vrtrain.springboot.service.IAnswerSheetService;
 import com.vrtrain.springboot.service.ILawService;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
@@ -147,6 +144,26 @@ public class QuestionController {
         QueryWrapper<Question> queryWrapper = new QueryWrapper<>();
         if (!"".equals(scene)) {
             queryWrapper.eq("scene", scene);
+        }
+
+        List<Question> questionList = questionService.list(queryWrapper);
+        for(int i = 0; i < questionList.size(); ++i){
+            if(questionList.get(i).getOp1() == null){
+                questionList.get(i).setOpsCount(0);
+            }else if(questionList.get(i).getOp2() == null){
+                questionList.get(i).setOpsCount(1);
+            }else if(questionList.get(i).getOp3() == null){
+                questionList.get(i).setOpsCount(2);
+            }else if(questionList.get(i).getOp4() == null){
+                questionList.get(i).setOpsCount(3);
+            }else if(questionList.get(i).getOp5() == null){
+                questionList.get(i).setOpsCount(4);
+            }else if(questionList.get(i).getOp6() == null){
+                questionList.get(i).setOpsCount(5);
+            }
+            else {
+                questionList.get(i).setOpsCount(6);
+            }
         }
         ret.setExam(questionService.list(queryWrapper));
         return ret;
