@@ -3,6 +3,7 @@ package com.vrtrain.springboot.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.vrtrain.springboot.common.Result;
+import com.vrtrain.springboot.controller.dto.Question2;
 import com.vrtrain.springboot.controller.dto.UnityApi;
 import com.vrtrain.springboot.entity.Law;
 import com.vrtrain.springboot.service.IAnswerSheetService;
@@ -146,25 +147,26 @@ public class QuestionController {
             queryWrapper.eq("scene", scene);
         }
 
-        List<Question> questionList = questionService.list(queryWrapper);
-        for(int i = 0; i < questionList.size(); ++i){
-            if(questionList.get(i).getOp1() == null){
-                questionList.get(i).setOpsCount(0);
-            }else if(questionList.get(i).getOp2() == null){
-                questionList.get(i).setOpsCount(1);
-            }else if(questionList.get(i).getOp3() == null){
-                questionList.get(i).setOpsCount(2);
-            }else if(questionList.get(i).getOp4() == null){
-                questionList.get(i).setOpsCount(3);
-            }else if(questionList.get(i).getOp5() == null){
-                questionList.get(i).setOpsCount(4);
-            }else if(questionList.get(i).getOp6() == null){
-                questionList.get(i).setOpsCount(5);
-            }
-            else {
-                questionList.get(i).setOpsCount(6);
-            }
-        }
+//        List<Question> questionList = questionService.list(queryWrapper);
+//
+//        for(int i = 0; i < questionList.size(); ++i){
+//            if(questionList.get(i).getOp1() == null){
+//                questionList.get(i).setOpsCount(0);
+//            }else if(questionList.get(i).getOp2() == null){
+//                questionList.get(i).setOpsCount(1);
+//            }else if(questionList.get(i).getOp3() == null){
+//                questionList.get(i).setOpsCount(2);
+//            }else if(questionList.get(i).getOp4() == null){
+//                questionList.get(i).setOpsCount(3);
+//            }else if(questionList.get(i).getOp5() == null){
+//                questionList.get(i).setOpsCount(4);
+//            }else if(questionList.get(i).getOp6() == null){
+//                questionList.get(i).setOpsCount(5);
+//            }
+//            else {
+//                questionList.get(i).setOpsCount(6);
+//            }
+//        }
         ret.setExam(questionService.list(queryWrapper));
         return ret;
     }
