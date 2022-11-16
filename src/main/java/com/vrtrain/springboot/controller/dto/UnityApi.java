@@ -9,5 +9,5 @@ import java.util.List;
 public class UnityApi {
     String audio;
     String lawUrl;
-    List<Question> exam;
+    List<Question2> exam;
 }

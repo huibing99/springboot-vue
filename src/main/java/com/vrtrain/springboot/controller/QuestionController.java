@@ -147,27 +147,30 @@ public class QuestionController {
             queryWrapper.eq("scene", scene);
         }
 
-//        List<Question> questionList = questionService.list(queryWrapper);
-//
-//        for(int i = 0; i < questionList.size(); ++i){
-//            if(questionList.get(i).getOp1() == null){
-//                questionList.get(i).setOpsCount(0);
-//            }else if(questionList.get(i).getOp2() == null){
-//                questionList.get(i).setOpsCount(1);
-//            }else if(questionList.get(i).getOp3() == null){
-//                questionList.get(i).setOpsCount(2);
-//            }else if(questionList.get(i).getOp4() == null){
-//                questionList.get(i).setOpsCount(3);
-//            }else if(questionList.get(i).getOp5() == null){
-//                questionList.get(i).setOpsCount(4);
-//            }else if(questionList.get(i).getOp6() == null){
-//                questionList.get(i).setOpsCount(5);
-//            }
-//            else {
-//                questionList.get(i).setOpsCount(6);
-//            }
-//        }
-        ret.setExam(questionService.list(queryWrapper));
+        List<Question> questionList = questionService.list(queryWrapper);
+        List<Question2> question2List = new ArrayList<>();
+        for(int i = 0; i < questionList.size(); ++i){
+            Question2 question2 = new Question2();
+            question2.setQuestion2(questionList.get(i));
+            if(questionList.get(i).getOp1() == null){
+                question2.setOpsCount(0);
+            }else if(questionList.get(i).getOp2() == null){
+                question2.setOpsCount(1);
+            }else if(questionList.get(i).getOp3() == null){
+                question2.setOpsCount(2);
+            }else if(questionList.get(i).getOp4() == null){
+                question2.setOpsCount(3);
+            }else if(questionList.get(i).getOp5() == null){
+                question2.setOpsCount(4);
+            }else if(questionList.get(i).getOp6() == null){
+                question2.setOpsCount(5);
+            }
+            else {
+                question2.setOpsCount(6);
+            }
+            question2List.add(question2);
+        }
+        ret.setExam(question2List);
         return ret;
     }
 }

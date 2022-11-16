@@ -1,60 +1,37 @@
-package com.vrtrain.springboot.entity;
+package com.vrtrain.springboot.controller.dto;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
+import com.vrtrain.springboot.entity.Question;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author huibing
- * @since 2022-09-07
- */
-@Getter
-@Setter
-  @ApiModel(value = "Question对象", description = "")
-public class Question implements Serializable {
+import java.io.Serializable;
 
-    private static final long serialVersionUID = 1L;
 
-      @ApiModelProperty("id")
-      @TableId(value = "id", type = IdType.AUTO)
-      private Integer id;
+@Data
+public class Question2 {
+      private Question question;
+      private Integer opsCount;
 
-      @ApiModelProperty("类型")
-      private String type;
+      public void setQuestion2(Question question) {
+            this.question = question;
+            this.question.setId(question.getId());
+            this.question.setType(question.getType());
+            this.question.setAnswer(question.getAnswer());
+            this.question.setScene(question.getScene());
+            this.question.setOp1(question.getOp1());
+            this.question.setOp2(question.getOp2());
+            this.question.setOp3(question.getOp3());
+            this.question.setOp4(question.getOp4());
+            this.question.setOp5(question.getOp5());
+            this.question.setOp6(question.getOp6());
+      }
 
-      @ApiModelProperty("所在场景")
-      private String scene;
-
-      @ApiModelProperty("问题")
-      private String question;
-
-      @ApiModelProperty("答案")
-      private String answer;
-
-      @ApiModelProperty("选项1")
-      private String op1;
-
-      @ApiModelProperty("选项2")
-      private String op2;
-
-      @ApiModelProperty("选项3")
-      private String op3;
-
-      @ApiModelProperty("选项4")
-      private String op4;
-
-      @ApiModelProperty("选项5")
-      private String op5;
-
-      @ApiModelProperty("选项6")
-      private String op6;
-
+      public void setOpsCount(Integer opsCount) {
+            this.opsCount = opsCount;
+      }
 }
