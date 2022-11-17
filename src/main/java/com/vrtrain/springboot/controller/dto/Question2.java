@@ -13,22 +13,21 @@ import java.io.Serializable;
 
 
 @Data
-public class Question2 {
-      private Question question;
+public class Question2 extends Question {
+//      private Question question;
       private Integer opsCount;
 
       public void setQuestion2(Question question) {
-            this.question = question;
-            this.question.setId(question.getId());
-            this.question.setType(question.getType());
-            this.question.setAnswer(question.getAnswer());
-            this.question.setScene(question.getScene());
-            this.question.setOp1(question.getOp1());
-            this.question.setOp2(question.getOp2());
-            this.question.setOp3(question.getOp3());
-            this.question.setOp4(question.getOp4());
-            this.question.setOp5(question.getOp5());
-            this.question.setOp6(question.getOp6());
+            this.setId(question.getId());
+            this.setType(question.getType());
+            this.setAnswer(question.getAnswer());
+            this.setScene(question.getScene());
+            this.setOp1(question.getOp1());
+            this.setOp2(question.getOp2());
+            this.setOp3(question.getOp3());
+            this.setOp4(question.getOp4());
+            this.setOp5(question.getOp5());
+            this.setOp6(question.getOp6());
       }
 
       public void setOpsCount(Integer opsCount) {
