@@ -18,6 +18,7 @@ public class Question2 extends Question {
       private Integer opsCount;
 
       public void setQuestion2(Question question) {
+            this.setQuestion(question.getQuestion());
             this.setId(question.getId());
             this.setType(question.getType());
             this.setAnswer(question.getAnswer());
