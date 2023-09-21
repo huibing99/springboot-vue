@@ -1,11 +1,11 @@
 server:
-  port: 90
+  port: 9090
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/vrtrain?serverTimezone=GMT%2b8
-    username: admin
+    username: root
     password: admin123
 mybatis:
   mapper-locations: classpath:mapper/*.xml

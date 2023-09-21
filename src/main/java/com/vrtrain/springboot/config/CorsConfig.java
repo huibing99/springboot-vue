@@ -20,11 +20,18 @@ public class CorsConfig {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
 
         // pro
-        corsConfiguration.addAllowedOrigin("http://vr-scene.metastar-health.com");
-        corsConfiguration.addAllowedOrigin("http://vr-web.metastar-health.com");
-        corsConfiguration.addAllowedOrigin("http://vr-exam.metastar-health.com");
+//        corsConfiguration.addAllowedOrigin("http://vr-scene.metastar-health.com");
+//        corsConfiguration.addAllowedOrigin("http://vr-web.metastar-health.com");
+//        corsConfiguration.addAllowedOrigin("http://vr-exam.metastar-health.com");
+
+        corsConfiguration.addAllowedOrigin("http://111.33.172.61:9091");
+        corsConfiguration.addAllowedOrigin("http://111.33.172.61:9092");
+        corsConfiguration.addAllowedOrigin("http://111.33.172.61:9093");
+        corsConfiguration.addAllowedOrigin("http://111.33.172.61:9094");
         // dev
 //        corsConfiguration.addAllowedOrigin("*");
+
+        //
 
         corsConfiguration.addAllowedHeader("*"); // 2 设置访问源请求头
         corsConfiguration.addAllowedMethod("*"); // 3 设置访问源请求方法
