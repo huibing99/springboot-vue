@@ -12,20 +12,21 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(userInterceptor())
-//                .addPathPatterns("/answer-sheet/getScoreByUser", "/answer-sheet/save2");
-//        registry.addInterceptor(adminInterceptor())
-//                .addPathPatterns("/**")
-//                .excludePathPatterns("/user/login", "/user/register",
-//                        "/trainee/register", "/trainee/login",
-//                        "/question/getRandomByScene", "/question/getRandomTestPaper", "/question/getAllByScene",
-//                        "/question/getByScene",
-//                        "/answer-sheet/getScoreByUser", "/answer-sheet/save2",
-//                        "/answer-sheet/getByUser", "/answer-sheet/getDetailScoreByUser",
-//                        "/law/getAllByScene",
-//                        "/audio/*",
-//                        "/exam/*",
-//                        "/posted-exam/*");
+        registry.addInterceptor(userInterceptor())
+                .addPathPatterns("/answer-sheet/getScoreByUser", "/answer-sheet/save2");
+        registry.addInterceptor(adminInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/user/login", "/user/register",
+                        "/trainee/register", "/trainee/login",
+                        "/question/getRandomByScene", "/question/getRandomTestPaper", "/question/getAllByScene",
+                        "/question/getByScene",
+                        "/answer-sheet/getScoreByUser", "/answer-sheet/save2",
+                        "/answer-sheet/getByUser", "/answer-sheet/getDetailScoreByUser",
+                        "/law/getAllByScene",
+                        "/audio/*",
+                        "/exam/*",
+                        "/posted-exam/*",
+                        "/item/*");
     }
 
     @Bean

@@ -54,16 +54,16 @@ public class Item implements Serializable {
       @ApiModelProperty("更新时间戳")
       private LocalDateTime updateTime;
 
-  public String getFileExtension() {
-    switch (this.type) {
-      case 0:
-        return "jpg";
-      case 1:
-        return "mp4";
-      case 2:
-        return "pdf";
-      default:
-        return "";
-    }
-  }
+//  public String getFileExtension() {
+//    switch (this.type) {
+//      case 0:
+//        return "jpg";
+//      case 1:
+//        return "MP4";
+//      case 2:
+//        return "pdf";
+//      default:
+//        return "";
+//    }
+//  }
 }
